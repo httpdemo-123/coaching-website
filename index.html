@@ -1,367 +1,356 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Bright Future Coaching</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bright Future Coaching Academy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 
 body{
-background:linear-gradient(135deg,#1e3c72,#2a5298);
-color:white;
-min-height:100vh;
+  background:linear-gradient(135deg,#1e3c72,#2a5298);
+  min-height:100vh;
 }
 
 /* NAVBAR */
 nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:15px 40px;
-background:rgba(0,0,0,0.4);
-backdrop-filter:blur(10px);
+  background:#000;
+  padding:15px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
-nav h2{
-letter-spacing:2px;
-}
+nav .logo{color:white;font-size:22px;font-weight:bold;}
+nav ul{list-style:none;display:flex;}
+nav ul li{margin-left:20px;}
+nav ul li a{color:white;text-decoration:none;cursor:pointer;}
+nav ul li a:hover{color:#ffcc00;}
 
-nav ul{
-list-style:none;
-display:flex;
-gap:20px;
-}
-
-nav ul li{
-cursor:pointer;
-padding:8px 18px;
-background:rgba(255,255,255,0.1);
-border-radius:20px;
-transition:0.3s;
-}
-
-nav ul li:hover{
-background:#00c6ff;
-transform:scale(1.1);
-}
-
-/* HOME PAGE */
-.section{
-padding:60px 20px;
-text-align:center;
-animation:fadeIn 1s ease;
-}
-
-.class-box{
-background:rgba(255,255,255,0.1);
-padding:20px;
-margin:15px auto;
-width:250px;
-border-radius:15px;
-transition:0.3s;
-}
-
-.class-box:hover{
-transform:translateY(-10px);
-background:#00c6ff;
-}
-
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
+/* HOME */
+#homePage{
+  text-align:center;
+  color:white;
+  padding:120px 20px;
 }
 
 /* LOGIN */
-#loginPage{
-display:none;
-height:100vh;
-justify-content:center;
-align-items:center;
+.login-container{
+  display:none;
+  height:80vh;
+  justify-content:center;
+  align-items:center;
 }
 
 .login-box{
-background:white;
-color:black;
-padding:30px;
-border-radius:15px;
-width:300px;
-text-align:center;
-animation:fadeIn 0.5s ease;
+  background:white;
+  padding:40px;
+  border-radius:12px;
+  width:320px;
+  text-align:center;
 }
 
 .login-box input{
-width:100%;
-padding:10px;
-margin:10px 0;
-border-radius:10px;
-border:1px solid #ccc;
+  width:100%;
+  padding:10px;
+  margin:10px 0;
 }
 
 .login-box button{
-padding:10px;
-width:100%;
-border:none;
-background:#2a5298;
-color:white;
-border-radius:10px;
-cursor:pointer;
+  width:100%;
+  padding:10px;
+  background:#1e3c72;
+  color:white;
+  border:none;
 }
 
-/* ADMIN DASHBOARD */
-#adminDashboard{
-display:none;
-padding:30px;
+/* DASHBOARD */
+.student-page{
+  display:none;
+  background:#f4f6f9;
+  min-height:100vh;
+  padding:30px;
 }
 
-.dashboard-header{
-display:flex;
-justify-content:space-between;
-margin-bottom:20px;
+.dashboard-title{
+  margin-bottom:20px;
 }
 
-.add-btn{
-padding:10px 20px;
-background:#00c6ff;
-border:none;
-border-radius:10px;
-cursor:pointer;
+.add-box{
+  display:flex;
+  gap:10px;
+  margin-bottom:20px;
 }
 
-.student-card{
-background:white;
-color:black;
-margin:15px 0;
-padding:15px;
-border-radius:10px;
-overflow:hidden;
-transition:0.4s;
+.add-box input{
+  flex:1;
+  padding:8px;
 }
 
-.student-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
+.add-box button{
+  background:#1e3c72;
+  color:white;
+  border:none;
+  padding:8px 15px;
+}
+
+.student-wrapper{
+  margin-bottom:15px;
+}
+
+.student-item{
+  background:white;
+  padding:15px;
+  border-radius:8px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.student-name{
+  flex:1;
+  font-weight:500;
+}
+
+.student-name[contenteditable]{
+  border-bottom:1px dotted #aaa;
 }
 
 .more-btn{
-padding:5px 15px;
-border:none;
-background:#2a5298;
-color:white;
-border-radius:10px;
-cursor:pointer;
+  background:#1e3c72;
+  color:white;
+  padding:5px 12px;
+  border:none;
+  cursor:pointer;
 }
 
-.student-details{
-max-height:0;
-overflow:hidden;
-transition:max-height 0.5s ease;
+/* SLIDE ANIMATION */
+.student-detail{
+  max-height:0;
+  overflow:hidden;
+  transition:max-height 0.5s ease, padding 0.4s ease;
+  background:#e9ecef;
+  border-radius:0 0 8px 8px;
 }
 
-.student-details.active{
-max-height:600px;
-margin-top:10px;
+.student-detail.open{
+  max-height:600px;
+  padding:15px;
 }
 
+/* Attendance Grid */
 .attendance{
-display:grid;
-grid-template-columns:repeat(10,1fr);
-gap:5px;
-margin-top:10px;
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:5px;
+  margin-top:10px;
 }
 
-.attendance div{
-background:#ddd;
-padding:5px;
-font-size:12px;
-text-align:center;
-border-radius:5px;
-cursor:pointer;
+.day{
+  background:#ff4d4d;
+  color:white;
+  text-align:center;
+  padding:5px;
+  cursor:pointer;
+  border-radius:4px;
+  font-size:12px;
 }
 
-.attendance .present{
-background:green;
-color:white;
+.day.present{
+  background:#28a745;
 }
 
-.payment-btn{
-margin-top:10px;
-padding:5px 15px;
-background:red;
-color:white;
-border:none;
-border-radius:10px;
-cursor:pointer;
+/* Payment */
+.payment{
+  margin-top:15px;
 }
 
-.payment-btn.paid{
-background:green;
+.payment button{
+  margin-left:10px;
+  padding:5px 10px;
+  border:none;
+  cursor:pointer;
+}
+
+footer{
+  text-align:center;
+  padding:15px;
+  background:black;
+  color:white;
 }
 </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
 <nav>
-<h2>Bright Future</h2>
-<ul>
-<li onclick="showHome()">Home</li>
-<li onclick="showLogin()">Admin</li>
-</ul>
+  <div class="logo">Bright Future</div>
+  <ul>
+    <li><a id="homeBtn">Home</a></li>
+    <li><a id="adminBtn">Admin</a></li>
+  </ul>
 </nav>
 
-<!-- HOME PAGE -->
+<!-- HOME -->
 <div id="homePage">
-<div class="section">
-<h1>Welcome to Bright Future Coaching</h1>
-<p>We provide quality education for all classes</p>
+  <h1>Bright Future Coaching Academy</h1>
+  <p>Professional Coaching Dashboard System</p>
 </div>
 
-<div class="section">
-<h2>Our Classes</h2>
-<div class="class-box">Class 6</div>
-<div class="class-box">Class 7</div>
-<div class="class-box">Class 8</div>
-<div class="class-box">Class 9</div>
-<div class="class-box">Class 10</div>
+<!-- LOGIN -->
+<div class="login-container" id="loginPage">
+  <div class="login-box">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="checkLogin()">Login</button>
+    <p id="errorMsg" style="color:red;display:none;">Wrong Info</p>
+  </div>
 </div>
 
-<div class="section">
-<h2>Admission Open</h2>
-<p>Contact us to enroll now!</p>
-</div>
+<!-- DASHBOARD -->
+<div class="student-page" id="studentPage">
+  <h2 class="dashboard-title">Admin Dashboard</h2>
+
+  <div class="add-box">
+    <input type="text" id="newStudent" placeholder="Enter Student Name">
+    <button onclick="addStudent()">Add Student</button>
+  </div>
+
+  <div id="studentList"></div>
 </div>
 
-<!-- LOGIN PAGE -->
-<div id="loginPage">
-<div class="login-box">
-<h2>Admin Login</h2>
-<input type="text" id="username" placeholder="Username">
-<input type="password" id="password" placeholder="Password">
-<button onclick="login()">Login</button>
-</div>
-</div>
-
-<!-- ADMIN DASHBOARD -->
-<div id="adminDashboard">
-<div class="dashboard-header">
-<h2>Admin Dashboard</h2>
-<button class="add-btn" onclick="addStudent()">+ Add Student</button>
-</div>
-
-<div id="studentList"></div>
-</div>
+<footer>© 2026 Bright Future Coaching Academy</footer>
 
 <script>
+
 let students = JSON.parse(localStorage.getItem("students")) || [];
 
+// NAVIGATION
+homeBtn.onclick=()=>{homePage.style.display="block";loginPage.style.display="none";studentPage.style.display="none";}
+adminBtn.onclick=()=>{homePage.style.display="none";loginPage.style.display="flex";}
+
+// LOGIN
+function checkLogin(){
+  if(username.value==="sir" && password.value==="1234"){
+    loginPage.style.display="none";
+    studentPage.style.display="block";
+    renderStudents();
+  }else{
+    errorMsg.style.display="block";
+  }
+}
+
+// SAVE
 function saveData(){
-localStorage.setItem("students",JSON.stringify(students));
+  localStorage.setItem("students",JSON.stringify(students));
 }
 
-function showHome(){
-document.getElementById("homePage").style.display="block";
-document.getElementById("loginPage").style.display="none";
-document.getElementById("adminDashboard").style.display="none";
-}
-
-function showLogin(){
-document.getElementById("homePage").style.display="none";
-document.getElementById("loginPage").style.display="flex";
-document.getElementById("adminDashboard").style.display="none";
-}
-
-function login(){
-let user=document.getElementById("username").value;
-let pass=document.getElementById("password").value;
-
-if(user==="admin" && pass==="1234"){
-document.getElementById("loginPage").style.display="none";
-document.getElementById("adminDashboard").style.display="block";
-renderStudents();
-}else{
-alert("Wrong login");
-}
-}
-
+// ADD STUDENT
 function addStudent(){
-let name=prompt("Enter student name:");
-if(name){
-students.push({
-name:name,
-attendance:Array(30).fill(false),
-paid:false
-});
-saveData();
-renderStudents();
-}
-}
-
-function toggleDetails(index){
-let details=document.getElementById("details"+index);
-details.classList.toggle("active");
+  let name=newStudent.value.trim();
+  if(name==="")return;
+  students.push({
+    name:name,
+    attendance:Array(30).fill(false),
+    paid:false
+  });
+  newStudent.value="";
+  saveData();
+  renderStudents();
 }
 
-function toggleAttendance(index,day){
-students[index].attendance[day]=!students[index].attendance[day];
-saveData();
-renderStudents();
-}
-
-function togglePayment(index){
-students[index].paid=!students[index].paid;
-saveData();
-renderStudents();
-}
-
+// RENDER
 function renderStudents(){
-let list=document.getElementById("studentList");
-list.innerHTML="";
+  studentList.innerHTML="";
+  students.forEach((s,index)=>{
+    let wrapper=document.createElement("div");
+    wrapper.className="student-wrapper";
 
-students.forEach((student,index)=>{
-let card=document.createElement("div");
-card.className="student-card";
+    let item=document.createElement("div");
+    item.className="student-item";
 
-let header=document.createElement("div");
-header.className="student-header";
+    let name=document.createElement("div");
+    name.className="student-name";
+    name.contentEditable=true;
+    name.innerText=(index+1)+". "+s.name;
 
-header.innerHTML=`
-<h3>${index+1}. ${student.name}</h3>
-<button class="more-btn" onclick="toggleDetails(${index})">More</button>
-`;
+    name.oninput=function(){
+      students[index].name=name.innerText.split(". ")[1];
+      saveData();
+    };
 
-let details=document.createElement("div");
-details.className="student-details";
-details.id="details"+index;
+    let btn=document.createElement("button");
+    btn.className="more-btn";
+    btn.innerText="More";
 
-let attendanceHTML='<div class="attendance">';
-for(let i=0;i<30;i++){
-attendanceHTML+=`
-<div class="${student.attendance[i]?'present':''}"
-onclick="toggleAttendance(${index},${i})">
-${i+1}
-</div>`;
+    let detail=document.createElement("div");
+    detail.className="student-detail";
+
+    // Attendance
+    let attendanceDiv=document.createElement("div");
+    attendanceDiv.innerHTML="<b>30-Day Attendance</b>";
+    let grid=document.createElement("div");
+    grid.className="attendance";
+
+    s.attendance.forEach((day,i)=>{
+      let cell=document.createElement("div");
+      cell.className="day";
+      cell.innerText=i+1;
+      if(day)cell.classList.add("present");
+
+      cell.onclick=function(){
+        students[index].attendance[i]=!students[index].attendance[i];
+        saveData();
+        renderStudents();
+      };
+
+      grid.appendChild(cell);
+    });
+
+    attendanceDiv.appendChild(grid);
+
+    // Payment
+    let paymentDiv=document.createElement("div");
+    paymentDiv.className="payment";
+    paymentDiv.innerHTML="<b>Payment:</b> "+(s.paid?"Paid ✅":"Not Paid ❌");
+
+    let payBtn=document.createElement("button");
+    payBtn.innerText="Toggle";
+    payBtn.onclick=function(){
+      students[index].paid=!students[index].paid;
+      saveData();
+      renderStudents();
+    };
+
+    paymentDiv.appendChild(payBtn);
+
+    detail.appendChild(attendanceDiv);
+    detail.appendChild(paymentDiv);
+
+    btn.onclick=function(){
+      if(detail.classList.contains("open")){
+        detail.classList.remove("open");
+        btn.innerText="More";
+      }else{
+        detail.classList.add("open");
+        btn.innerText="Less";
+      }
+    };
+
+    item.appendChild(name);
+    item.appendChild(btn);
+
+    wrapper.appendChild(item);
+    wrapper.appendChild(detail);
+
+    studentList.appendChild(wrapper);
+  });
 }
-attendanceHTML+='</div>';
 
-details.innerHTML=attendanceHTML+
-`<button class="payment-btn ${student.paid?'paid':''}"
-onclick="togglePayment(${index})">
-${student.paid?'Paid':'Unpaid'}
-</button>`;
-
-card.appendChild(header);
-card.appendChild(details);
-list.appendChild(card);
-});
-}
 </script>
 
 </body>
