@@ -113,17 +113,17 @@ section h2{
   text-shadow:0 0 15px #00f2ff;
 }
 
-/* 🌟 COURSE SECTION */
+/* COURSE SECTION */
 .course-box{
   display:flex;
   justify-content:center;
   flex-wrap:wrap;
   gap:30px;
   margin-top:30px;
-  perspective:1000px;
+  perspective:1200px;
 }
 
-/* 🎨 Perfect Math Gradient Cards */
+/* Premium Gradient Cards */
 .card{
   padding:18px 45px;
   border-radius:50px;
@@ -137,6 +137,7 @@ section h2{
   animation:gradientMove 6s ease infinite, float 4s ease-in-out infinite;
   box-shadow:0 0 25px rgba(0,255,255,0.6);
   transition:0.6s;
+  transform-style:preserve-3d;
 }
 
 /* Moving Gradient */
@@ -153,7 +154,7 @@ section h2{
   100%{transform:translateY(0);}
 }
 
-/* Shining Border Effect */
+/* Shining Border */
 .card::before{
   content:"";
   position:absolute;
@@ -171,19 +172,25 @@ section h2{
   100%{background-position:400%;}
 }
 
-/* 3D Hover */
+/* Hover 3D */
 .card:hover{
-  transform:rotateY(15deg) scale(1.2);
+  transform:rotateY(15deg) scale(1.15);
   box-shadow:0 0 45px #00f2ff;
 }
 
-/* ✨ APPLY SECTION SPECIAL ANIMATION */
+/* ✅ CLICK FORWARD EFFECT */
+.card.active{
+  transform:translateZ(150px) scale(1.3) rotateY(0deg);
+  box-shadow:0 0 60px #00f2ff;
+  z-index:10;
+}
+
+/* APPLY SECTION SPECIAL ANIMATION */
 #admission{
   position:relative;
   overflow:hidden;
 }
 
-/* glowing animated background wave */
 #admission::before{
   content:"";
   position:absolute;
@@ -276,6 +283,14 @@ function showHome(){
 function showAdminLogin(){
   document.getElementById('homePage').style.display='none';
 }
+
+/* CLICK ANIMATION SCRIPT */
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
+    card.classList.toggle('active');
+  });
+});
 </script>
 
 </body>
