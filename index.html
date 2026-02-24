@@ -15,7 +15,7 @@
   scroll-behavior:smooth;
 }
 
-/* 🌈 Animated Premium Background */
+/* 🌈 Animated Background */
 body{
   color:#ffffff;
   overflow-x:hidden;
@@ -30,7 +30,7 @@ body{
   100%{background-position:0% 50%;}
 }
 
-/* NAVBAR - Glass + Neon */
+/* NAVBAR */
 nav{
   backdrop-filter:blur(12px);
   background:rgba(0,0,0,0.4);
@@ -113,7 +113,7 @@ section h2{
   text-shadow:0 0 15px #00f2ff;
 }
 
-/* ✨ 3D FLOATING GLASS CARDS */
+/* 🌟 COURSE SECTION */
 .course-box{
   display:flex;
   justify-content:center;
@@ -123,77 +123,88 @@ section h2{
   perspective:1000px;
 }
 
+/* 🎨 Perfect Math Gradient Cards */
 .card{
-  background:rgba(255,255,255,0.1);
-  backdrop-filter:blur(15px);
-  padding:18px 40px;
+  padding:18px 45px;
   border-radius:50px;
-  border:1px solid rgba(255,255,255,0.3);
-  color:#ffffff;
   font-weight:600;
-  transition:0.6s;
   cursor:pointer;
-  box-shadow:0 0 20px rgba(0,255,255,0.5);
-  animation:float 4s ease-in-out infinite;
+  color:white;
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#00f2ff,#4facfe,#00ff87,#00f2ff);
+  background-size:300% 300%;
+  animation:gradientMove 6s ease infinite, float 4s ease-in-out infinite;
+  box-shadow:0 0 25px rgba(0,255,255,0.6);
+  transition:0.6s;
 }
 
-/* Floating animation */
+/* Moving Gradient */
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+/* Floating */
 @keyframes float{
-  0%{transform:translateY(0px);}
+  0%{transform:translateY(0);}
   50%{transform:translateY(-15px);}
-  100%{transform:translateY(0px);}
+  100%{transform:translateY(0);}
 }
 
-/* 3D Hover Effect */
+/* Shining Border Effect */
+.card::before{
+  content:"";
+  position:absolute;
+  top:-2px; left:-2px;
+  right:-2px; bottom:-2px;
+  border-radius:50px;
+  background:linear-gradient(45deg,#00f2ff,#ff00ff,#00ff87,#00f2ff);
+  background-size:400%;
+  animation:shine 6s linear infinite;
+  z-index:-1;
+}
+
+@keyframes shine{
+  0%{background-position:0%;}
+  100%{background-position:400%;}
+}
+
+/* 3D Hover */
 .card:hover{
   transform:rotateY(15deg) scale(1.2);
-  box-shadow:0 0 40px #00f2ff;
+  box-shadow:0 0 45px #00f2ff;
 }
 
-/* LOGIN PAGE */
-.login-container{
-  display:none;
-  min-height:80vh;
-  justify-content:center;
-  align-items:center;
+/* ✨ APPLY SECTION SPECIAL ANIMATION */
+#admission{
+  position:relative;
+  overflow:hidden;
 }
 
-.login-box{
-  background:rgba(255,255,255,0.1);
-  backdrop-filter:blur(15px);
-  padding:40px;
-  border-radius:20px;
-  box-shadow:0 0 30px #00f2ff;
-  text-align:center;
-  width:320px;
+/* glowing animated background wave */
+#admission::before{
+  content:"";
+  position:absolute;
+  top:0; left:0;
+  width:200%;
+  height:200%;
+  background:radial-gradient(circle at center,#00f2ff33,transparent 70%);
+  animation:rotateGlow 10s linear infinite;
+  z-index:0;
 }
 
-.login-box input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border-radius:8px;
-  border:1px solid rgba(255,255,255,0.4);
-  background:transparent;
-  color:white;
+@keyframes rotateGlow{
+  from{transform:rotate(0deg);}
+  to{transform:rotate(360deg);}
 }
 
-.login-box button{
-  width:100%;
-}
-
-#errorMsg{
-  color:#ff4d4d;
-  font-size:14px;
-  margin-top:5px;
-  display:none;
-}
-
-/* STUDENT DASHBOARD */
-#studentPage{
-  display:none;
-  padding:30px;
-  min-height:100vh;
+#admission h2,
+#admission p,
+#admission button{
+  position:relative;
+  z-index:1;
 }
 
 /* FOOTER */
